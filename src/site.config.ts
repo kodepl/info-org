@@ -6,8 +6,8 @@ const site = {
   shortName: "INFO",
   domain: "info.org.pl",
   tagline: "Serwis informacyjny: Polska, świat, gospodarka i materiały wideo na żywo",
-  emailUser: "haser88",
-  emailDomain: "gmail.com",
+  
+  
   city: "Warszawa",
   address: "ul. Marszałkowska 84/92, 00-514 Warszawa",
   author: "Paweł Kruk",
