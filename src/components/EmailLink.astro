@@ -1,0 +1,25 @@
+---
+const { class: className = "text-beam underline" } = Astro.props;
+---
+<span class="js-email" data-u="haser88" data-d="gmail.com" data-class={className}></span>
+<script is:inline>
+(function () {
+  function reveal() {
+    document.querySelectorAll(".js-email").forEach(function (el) {
+      if (el.getAttribute("data-done")) return;
+      var u = el.getAttribute("data-u");
+      var d = el.getAttribute("data-d");
+      if (!u || !d) return;
+      var addr = u + String.fromCharCode(64) + d;
+      var a = document.createElement("a");
+      a.href = "mai" + "lto:" + addr;
+      a.textContent = addr;
+      a.className = el.getAttribute("data-class") || "";
+      el.replaceWith(a);
+      el.setAttribute("data-done", "1");
+    });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", reveal);
+  else reveal();
+})();
+</script>
