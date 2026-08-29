@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import site, { deskSlug } from "../site.config";
+import EmailLink from "../components/EmailLink.astro";
 const { title, description = site.tagline, image = site.heroImage } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const now = new Date().toLocaleString("pl-PL", {
@@ -78,7 +79,7 @@ const now = new Date().toLocaleString("pl-PL", {
         <div>
           <p class="font-display text-2xl tracking-wide">{site.shortName}</p>
           <p class="mt-2 text-sm text-mute">{site.address}</p>
-          <p class="mt-1 text-sm"><a class="text-beam underline" href={`mailto:${site.email}`}>{site.email}</a></p>
+          <p class="mt-1 text-sm"><EmailLink /></p>
         </div>
         <div>
           <p class="font-mono text-[10px] uppercase tracking-[0.25em] text-mute">Deski tematyczne</p>
