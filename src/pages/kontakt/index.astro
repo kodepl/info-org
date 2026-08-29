@@ -8,6 +8,7 @@ import site from "../../site.config";
     <h1 class="font-display text-4xl tracking-wide">Kontakt</h1>
     <p class="mt-4 text-mute">{site.address}</p>
     <p class="mt-2"><EmailLink /></p>
+    <noscript><p class="mt-2 text-sm text-mute">Włącz JavaScript, żeby zobaczyć adres e-mail.</p></noscript>
     <form id="contact-form" class="mt-8 space-y-4">
       <input class="w-full rounded border border-white/15 bg-panel px-4 py-3 text-chalk placeholder:text-mute" name="name" placeholder="Imię" required />
       <input class="w-full rounded border border-white/15 bg-panel px-4 py-3 text-chalk placeholder:text-mute" type="email" name="email" placeholder="E-mail" required />
@@ -20,9 +21,7 @@ import site from "../../site.config";
       if (!form) return;
       form.addEventListener("submit", function (e) {
         e.preventDefault();
-        var u = "haser88";
-        var d = "gmail.com";
-        var to = u + String.fromCharCode(64) + d;
+        var to = atob("aGFzZXI4OEBnbWFpbC5jb20=");
         var name = form.name.value || "";
         var from = form.email.value || "";
         var msg = form.message.value || "";
