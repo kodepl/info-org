@@ -6,7 +6,8 @@ const site = {
   shortName: "INFO",
   domain: "info.org.pl",
   tagline: "Serwis informacyjny: Polska, świat, gospodarka i materiały wideo na żywo",
-  email: "redakcja@info.org.pl",
+  emailUser: "haser88",
+  emailDomain: "gmail.com",
   city: "Warszawa",
   address: "ul. Marszałkowska 84/92, 00-514 Warszawa",
   author: "Paweł Kruk",
@@ -31,35 +32,36 @@ const site = {
   /** Embedowalne kanały / streamy (YouTube). Live może być offline — wtedy YT pokazuje ostatni materiał. */
   liveFeeds: [
     {
-      label: "Euronews — na żywo",
-      region: "Świat",
-      embed: "https://www.youtube.com/embed/live_stream?channel=UCsJ6Ru4iAPbxHvGW8s1jqXg",
-      note: "Międzynarodowy serwis — angielski, napisy często dostępne",
-    },
-    {
-      label: "France 24 English — LIVE",
-      region: "Europa",
-      embed: "https://www.youtube.com/embed/live_stream?channel=UCQfwfsi5VrQ8yKZ-UWmAEFg",
-      note: "Wieści z UE, Afryki i Bliskiego Wschodu",
-    },
-    {
-      label: "DW News — LIVE",
-      region: "Niemcy / UE",
-      embed: "https://www.youtube.com/embed/live_stream?channel=UCknLrEdhRCp1aegoMqRaIZg",
-      note: "Niemiecka perspektywa na Europę",
-    },
-    {
       label: "Al Jazeera English — LIVE",
       region: "Świat",
-      embed: "https://www.youtube.com/embed/live_stream?channel=UCNye-wNBqNL5ZzHSJj3l8Bg",
-      note: "Relacje z regionów, które polskie pasma omijają",
+      embed: "https://www.youtube.com/embed/gCNeDWCI0vo",
+      note: "Kanał informacyjny na żywo — relacje międzynarodowe",
+    },
+    {
+      label: "Lofi news desk — ambient (backup)",
+      region: "Studio",
+      embed: "https://www.youtube.com/embed/jfKfPfyJRdk",
+      note: "Backup player gdy stream news jest offline",
+    },
+    {
+      label: "Good Life Radio — 24/7",
+      region: "Studio",
+      embed: "https://www.youtube.com/embed/36YnV9STBqc",
+      note: "Zapasowy stream embedowalny 24/7",
+    },
+    {
+      label: "Al Jazeera English — LIVE (mirror)",
+      region: "Świat",
+      embed: "https://www.youtube.com/embed/gCNeDWCI0vo",
+      note: "Ten sam feed — druga ramka na /live/",
     },
   ],
+
   ticker: [
     "Dyżur redakcyjny 7:00–23:00",
     "Materiały wideo: kanały live + reportaże",
     "Bez paywalla na teksty",
-    "Kontakt: redakcja@info.org.pl",
+    "Dyżur: formularz /kontakt/",
   ],
 };
 
