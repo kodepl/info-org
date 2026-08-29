@@ -1,0 +1,33 @@
+---
+import Broadcast from "../../layouts/Broadcast.astro";
+import { getCollection } from "astro:content";
+import site, { coverFor, deskSlug } from "../../site.config";
+
+export async function getStaticPaths() {
+  return site.desks.map((d) => ({ params: { slug: deskSlug(d.name) }, props: { desk: d } }));
+}
+
+const { desk } = Astro.props;
+const posts = (await getCollection("wiadomosci"))
+  .filter((p) => p.data.category === desk.name)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+<Broadcast title={desk.name} description={desk.blurb}>
+  <main class="mx-auto max-w-4xl px-4 py-12">
+    <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-beam">Deska</p>
+    <h1 class="mt-2 font-display text-4xl tracking-wide">{desk.name}</h1>
+    <p class="mt-3 text-mute">{desk.blurb}</p>
+    <div class="mt-10 space-y-6">
+      {posts.map((post) => (
+        <article class="flex gap-4 border-b border-white/10 pb-5">
+          <img src={coverFor(post.data.category, post.data.image)} alt="" class="h-20 w-32 shrink-0 rounded object-cover" />
+          <div>
+            <a href={`/wiadomosci/${post.slug}/`} class="font-display text-xl tracking-wide hover:text-beam">{post.data.title}</a>
+            <p class="mt-1 text-sm text-mute">{post.data.description}</p>
+          </div>
+        </article>
+      ))}
+      {posts.length === 0 && <p class="text-mute">Brak materiałów w tej desce — wróć po dyżurze.</p>}
+    </div>
+  </main>
+</Broadcast>

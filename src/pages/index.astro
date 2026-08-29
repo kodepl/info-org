@@ -1,0 +1,95 @@
+---
+import Broadcast from "../layouts/Broadcast.astro";
+import { getCollection } from "astro:content";
+import site, { coverFor, deskSlug } from "../site.config";
+
+const posts = (await getCollection("wiadomosci")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+const lead = posts[0];
+const rail = posts.slice(1, 5);
+const more = posts.slice(5);
+const primaryLive = site.liveFeeds[0];
+---
+<Broadcast title={site.name} description={site.tagline} image={site.heroImage}>
+  <main class="mx-auto max-w-7xl px-4 py-8">
+    <section class="grid gap-6 lg:grid-cols-12">
+      <div class="lg:col-span-8">
+        <div class="overflow-hidden rounded-lg border border-beam/30 bg-black shadow-glow scanlines">
+          <div class="flex items-center justify-between border-b border-white/10 bg-panel/80 px-3 py-2 font-mono text-[10px] uppercase tracking-widest text-mute">
+            <span class="flex items-center gap-2 text-signal">
+              <span class="live-dot h-2 w-2 rounded-full bg-signal"></span>
+              {primaryLive.label}
+            </span>
+            <span>{primaryLive.region}</span>
+          </div>
+          <div class="aspect-video w-full">
+            <iframe
+              class="h-full w-full"
+              src={primaryLive.embed}
+              title={primaryLive.label}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+          <p class="border-t border-white/10 px-3 py-2 text-xs text-mute">{primaryLive.note} · <a href="/live/" class="text-beam hover:underline">więcej kanałów</a></p>
+        </div>
+      </div>
+
+      <aside class="flex flex-col gap-4 lg:col-span-4">
+        <div class="rounded-lg border border-signal/40 bg-signal/10 px-4 py-3">
+          <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-signal">Breaking desk</p>
+          <p class="mt-1 text-sm text-chalk/90">Najnowsze teksty z dyżuru — bez clickbaitu w tytule.</p>
+        </div>
+        {rail.map((post) => (
+          <article class="rounded-lg border border-white/10 bg-panel/60 p-4 hover:border-beam/40">
+            <p class="font-mono text-[10px] uppercase tracking-widest text-beam">{post.data.category}</p>
+            <h2 class="mt-1 font-display text-xl leading-tight tracking-wide">
+              <a href={`/wiadomosci/${post.slug}/`} class="hover:text-beam">{post.data.title}</a>
+            </h2>
+            <p class="mt-2 line-clamp-2 text-sm text-mute">{post.data.description}</p>
+          </article>
+        ))}
+      </aside>
+    </section>
+
+    {lead && (
+      <section class="mt-10 grid gap-6 border-t border-white/10 pt-10 lg:grid-cols-12">
+        <article class="lg:col-span-7">
+          <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-signal">Lead dnia</p>
+          <h2 class="mt-2 font-display text-3xl font-semibold tracking-wide md:text-4xl">
+            <a href={`/wiadomosci/${lead.slug}/`} class="hover:text-beam">{lead.data.title}</a>
+          </h2>
+          <p class="mt-4 text-lg leading-relaxed text-mute">{lead.data.description}</p>
+          <a href={`/wiadomosci/${lead.slug}/`} class="mt-4 inline-block font-mono text-xs uppercase tracking-widest text-beam hover:underline">Czytaj materiał →</a>
+        </article>
+        <div class="lg:col-span-5">
+          <img src={coverFor(lead.data.category, lead.data.image)} alt="" class="aspect-[16/10] w-full rounded-lg object-cover ring-1 ring-white/10" />
+        </div>
+      </section>
+    )}
+
+    <nav class="my-10 flex flex-wrap gap-2">
+      {site.desks.map((d) => (
+        <a href={`/deski/${deskSlug(d.name)}/`} class="rounded border border-white/15 px-4 py-2 font-mono text-[11px] uppercase tracking-widest text-mute hover:border-beam hover:text-beam">{d.name}</a>
+      ))}
+      <a href="/live/" class="rounded border border-signal/50 bg-signal/10 px-4 py-2 font-mono text-[11px] uppercase tracking-widest text-signal hover:bg-signal/20">Kanały LIVE</a>
+    </nav>
+
+    <section class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      {more.map((post) => (
+        <article class="overflow-hidden rounded-lg border border-white/10 bg-panel/40">
+          <img src={coverFor(post.data.category, post.data.image)} alt="" class="aspect-[16/9] w-full object-cover" />
+          <div class="p-4">
+            <p class="font-mono text-[10px] uppercase tracking-widest text-beam">{post.data.category}</p>
+            <h3 class="mt-1 font-display text-xl tracking-wide">
+              <a href={`/wiadomosci/${post.slug}/`} class="hover:text-beam">{post.data.title}</a>
+            </h3>
+            <p class="mt-2 line-clamp-2 text-sm text-mute">{post.data.description}</p>
+          </div>
+        </article>
+      ))}
+    </section>
+  </main>
+</Broadcast>

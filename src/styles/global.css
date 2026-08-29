@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes pulse-live {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+
+.ticker-track {
+  animation: ticker 38s linear infinite;
+}
+
+.live-dot {
+  animation: pulse-live 1.4s ease-in-out infinite;
+}
+
+.scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(61, 224, 255, 0.03) 2px,
+    rgba(61, 224, 255, 0.03) 4px
+  );
+}

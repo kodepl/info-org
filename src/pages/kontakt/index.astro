@@ -1,0 +1,17 @@
+---
+import Broadcast from "../../layouts/Broadcast.astro";
+import site from "../../site.config";
+---
+<Broadcast title="Kontakt" description="Napisz do redakcji">
+  <main class="mx-auto max-w-xl px-4 py-12">
+    <h1 class="font-display text-4xl tracking-wide">Kontakt</h1>
+    <p class="mt-4 text-mute">{site.address}</p>
+    <p class="mt-2"><a class="text-beam underline" href={`mailto:${site.email}`}>{site.email}</a></p>
+    <form class="mt-8 space-y-4" method="post" action={`mailto:${site.email}`}>
+      <input class="w-full rounded border border-white/15 bg-panel px-4 py-3 text-chalk placeholder:text-mute" name="name" placeholder="Imię" required />
+      <input class="w-full rounded border border-white/15 bg-panel px-4 py-3 text-chalk placeholder:text-mute" type="email" name="email" placeholder="E-mail" required />
+      <textarea class="w-full rounded border border-white/15 bg-panel px-4 py-3 text-chalk placeholder:text-mute" name="message" rows="5" placeholder="Wiadomość" required></textarea>
+      <button class="rounded bg-signal px-6 py-3 font-mono text-xs uppercase tracking-widest text-white hover:bg-signal/90" type="submit">Wyślij</button>
+    </form>
+  </main>
+</Broadcast>

@@ -1,0 +1,17 @@
+---
+import Broadcast from "../../layouts/Broadcast.astro";
+import site, { deskSlug } from "../../site.config";
+---
+<Broadcast title="Deski" description="Działy tematyczne serwisu INFO">
+  <main class="mx-auto max-w-5xl px-4 py-12">
+    <h1 class="font-display text-4xl tracking-wide">Deski tematyczne</h1>
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+      {site.desks.map((d) => (
+        <a href={`/deski/${deskSlug(d.name)}/`} class="rounded-xl border border-white/10 bg-panel/50 p-6 hover:border-beam/50">
+          <h2 class="font-display text-2xl tracking-wide text-beam">{d.name}</h2>
+          <p class="mt-2 text-sm text-mute">{d.blurb}</p>
+        </a>
+      ))}
+    </div>
+  </main>
+</Broadcast>

@@ -1,0 +1,24 @@
+---
+import Broadcast from "../../layouts/Broadcast.astro";
+import { getCollection } from "astro:content";
+import { coverFor } from "../../site.config";
+const posts = (await getCollection("wiadomosci")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+<Broadcast title="Wiadomości" description="Archiwum materiałów INFO.ORG.PL">
+  <main class="mx-auto max-w-4xl px-4 py-12">
+    <h1 class="font-display text-4xl tracking-wide">Wiadomości</h1>
+    <ol class="mt-10 space-y-6">
+      {posts.map((post, i) => (
+        <li class="flex gap-4 border-b border-white/10 pb-5">
+          <span class="font-mono text-beam">{String(i + 1).padStart(2, "0")}</span>
+          <div class="flex-1">
+            <p class="font-mono text-[10px] uppercase tracking-widest text-mute">{post.data.category}</p>
+            <a href={`/wiadomosci/${post.slug}/`} class="font-display text-2xl tracking-wide hover:text-beam">{post.data.title}</a>
+            <p class="mt-1 text-sm text-mute">{post.data.description}</p>
+          </div>
+          <img src={coverFor(post.data.category, post.data.image)} alt="" class="hidden h-16 w-24 rounded object-cover sm:block" />
+        </li>
+      ))}
+    </ol>
+  </main>
+</Broadcast>

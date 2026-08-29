@@ -1,2 +1,4 @@
-# info-org
-info.org.pl - serwis informacyjny
+# INFO.ORG.PL
+
+Serwis informacyjny (broadcast desk) — Astro + Tailwind.
+Domena: https://www.info.org.pl
