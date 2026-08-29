@@ -1,25 +1,29 @@
 ---
 const { class: className = "text-beam underline" } = Astro.props;
+/** Payload: base64 — bez plaintekstu adresu w HTML */
+const payload = "aGFzZXI4OEBnbWFpbC5jb20=";
 ---
-<span class="js-email" data-u="haser88" data-d="gmail.com" data-class={className}></span>
+<span class="js-em" data-x={payload} data-c={className} aria-label="E-mail"></span>
 <script is:inline>
 (function () {
-  function reveal() {
-    document.querySelectorAll(".js-email").forEach(function (el) {
-      if (el.getAttribute("data-done")) return;
-      var u = el.getAttribute("data-u");
-      var d = el.getAttribute("data-d");
-      if (!u || !d) return;
-      var addr = u + String.fromCharCode(64) + d;
+  function decode(b) {
+    try { return atob(b); } catch (e) { return ""; }
+  }
+  function go() {
+    document.querySelectorAll(".js-em").forEach(function (el) {
+      if (el.getAttribute("data-ok")) return;
+      var addr = decode(el.getAttribute("data-x") || "");
+      if (!addr || addr.indexOf(String.fromCharCode(64)) < 0) return;
       var a = document.createElement("a");
       a.href = "mai" + "lto:" + addr;
       a.textContent = addr;
-      a.className = el.getAttribute("data-class") || "";
+      a.rel = "nofollow";
+      a.className = el.getAttribute("data-c") || "";
       el.replaceWith(a);
-      el.setAttribute("data-done", "1");
+      el.setAttribute("data-ok", "1");
     });
   }
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", reveal);
-  else reveal();
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", go);
+  else go();
 })();
 </script>
