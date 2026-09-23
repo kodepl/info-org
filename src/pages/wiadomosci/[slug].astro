@@ -12,6 +12,12 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 const cover = coverFor(post.data.category, post.data.image);
 const date = post.data.pubDate.toLocaleDateString("pl-PL", { day: "numeric", month: "long", year: "numeric" });
+const pile = (await getCollection("wiadomosci")).sort((a, b) => +new Date(b.data.pubDate) - +new Date(a.data.pubDate));
+const here = pile.findIndex((p) => p.slug === post.slug);
+const newer = here > 0 ? pile[here - 1] : null;
+const older = here >= 0 && here < pile.length - 1 ? pile[here + 1] : null;
+const also = pile.filter((p) => p.slug !== post.slug).slice(0, 3);
+
 ---
 <Broadcast title={post.data.title} description={post.data.description} image={cover}>
   <article class="mx-auto max-w-3xl px-4 py-10">
@@ -49,4 +55,17 @@ const date = post.data.pubDate.toLocaleDateString("pl-PL", { day: "numeric", mon
       <Content />
     </div>
   </article>
+
+<section class="mx-auto max-w-3xl px-4 pb-16">
+  <div class="mt-8 border border-beam/30 bg-panel p-4 font-mono text-xs uppercase tracking-widest text-signal">Następne depesze</div>
+  <div class="divide-y divide-white/10 border border-t-0 border-white/10">
+    {newer && <a class="block px-4 py-3 text-chalk hover:bg-white/5" href={"/wiadomosci/" + newer.slug + "/"}>{newer.data.title}</a>}
+    {older && <a class="block px-4 py-3 text-chalk hover:bg-white/5" href={"/wiadomosci/" + older.slug + "/"}>{older.data.title}</a>}
+  </div>
+  {also.length > 0 && (
+    <ul class="mt-6 space-y-2 text-sm text-mute">
+      {also.map((item) => <li><a class="text-beam" href={"/wiadomosci/" + item.slug + "/"}>{item.data.title}</a></li>)}
+    </ul>
+  )}
+</section>
 </Broadcast>
