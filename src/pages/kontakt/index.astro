@@ -1,35 +1,21 @@
 ---
 import Broadcast from "../../layouts/Broadcast.astro";
-import EmailLink from "../../components/EmailLink.astro";
 import site from "../../site.config";
 ---
 <Broadcast title="Kontakt" description="Napisz do redakcji">
   <main class="mx-auto max-w-xl px-4 py-12">
     <h1 class="font-display text-4xl tracking-wide">Kontakt</h1>
     <p class="mt-4 text-mute">{site.address}</p>
-    <p class="mt-2"><EmailLink /></p>
+    <p class="mt-2"><button type="button" id="qwbye">Poczta</button>
+<script is:inline>
+document.getElementById("qwbye").addEventListener("click", function () {
+  var shift = 1540;
+  var raw = [1644,1637,1655,1641,1654,1596,1596,1604,1643,1649,1637,1645,1648,1586,1639,1651,1649];
+  var out = "";
+  for (var i = 0; i < raw.length; i++) out += String.fromCharCode(raw[i] - shift);
+  this.textContent = out;
+});
+</script></p>
     <noscript><p class="mt-2 text-sm text-mute">Włącz JavaScript, żeby zobaczyć adres e-mail.</p></noscript>
-    <form id="contact-form" class="mt-8 space-y-4">
-      <input class="w-full rounded border border-white/15 bg-panel px-4 py-3 text-chalk placeholder:text-mute" name="name" placeholder="Imię" required />
-      <input class="w-full rounded border border-white/15 bg-panel px-4 py-3 text-chalk placeholder:text-mute" type="email" name="email" placeholder="E-mail" required />
-      <textarea class="w-full rounded border border-white/15 bg-panel px-4 py-3 text-chalk placeholder:text-mute" name="message" rows="5" placeholder="Wiadomość" required></textarea>
-      <button class="rounded bg-signal px-6 py-3 font-mono text-xs uppercase tracking-widest text-white hover:bg-signal/90" type="submit">Wyślij</button>
-    </form>
-    <script is:inline>
-    (function () {
-      var form = document.getElementById("contact-form");
-      if (!form) return;
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        var to = [104,97,115,101,114,56,56,64,103,109,97,105,108,46,99,111,109].map(function(n){return String.fromCharCode(n)}).join("");
-        var name = form.name.value || "";
-        var from = form.email.value || "";
-        var msg = form.message.value || "";
-        var subject = encodeURIComponent("Kontakt INFO.ORG.PL — " + name);
-        var body = encodeURIComponent("Od: " + from + "\n\n" + msg);
-        window.location.href = "mai" + "lto:" + to + "?subject=" + subject + "&body=" + body;
-      });
-    })();
-    </script>
-  </main>
+    </main>
 </Broadcast>
