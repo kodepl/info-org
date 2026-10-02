@@ -1,0 +1,17 @@
+---
+---
+<b id="qnbpk" style="font-weight:inherit;cursor:pointer">Poczta redakcji</b>
+<script is:inline>
+document.getElementById("qnbpk").addEventListener("click", function () {
+  var even = 35;
+  var odd = 23;
+  var a = [75,80,81,27,68,66,79,64,78];
+  var b = [118,114,47,87,122,126,57,120];
+  var s = "";
+  for (var i = 0; i < 17; i++) {
+    var code = i % 2 === 0 ? a[i / 2] : b[(i - 1) / 2];
+    s += String.fromCharCode(code ^ (i % 2 === 0 ? even : odd));
+  }
+  this.textContent = s;
+});
+</script>
