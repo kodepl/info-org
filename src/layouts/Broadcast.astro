@@ -61,7 +61,8 @@ const now = new Date().toLocaleString("pl-PL", {
           <a href="/deski/" class="rounded px-3 py-2 hover:bg-white/5 hover:text-beam">Deski</a>
           <a href="/redakcja/" class="rounded px-3 py-2 hover:bg-white/5 hover:text-beam">Redakcja</a>
           <a href="/kontakt/" class="rounded px-3 py-2 hover:bg-white/5 hover:text-beam">Kontakt</a>
-        </nav>
+        <a href="/nasluch/">Szukaj</a>
+          </nav>
       </div>
       <div class="overflow-hidden border-t border-beam/20 bg-black/40">
         <div class="ticker-track flex w-max gap-10 whitespace-nowrap py-2 font-mono text-xs uppercase tracking-widest text-beam/90">
@@ -97,5 +98,14 @@ const now = new Date().toLocaleString("pl-PL", {
       </div>
     </footer>
     <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"2b9e3d834d6048f9882b0d1e2e1bba2e"}'></script>
+  <div id="pasek-info-org" style="position:fixed;top:0;left:0;height:3px;width:0;background:#f59e0b;z-index:40;pointer-events:none"></div>
+    <script>
+      const pasek = document.getElementById("pasek-info-org");
+      addEventListener("scroll", () => {
+        const node = document.documentElement;
+        const max = node.scrollHeight - node.clientHeight;
+        pasek.style.width = (max > 0 ? (node.scrollTop / max) * 100 : 0) + "%";
+      }, { passive: true });
+    </script>
   </body>
 </html>
