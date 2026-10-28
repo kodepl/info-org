@@ -1,5 +1,5 @@
 ---
-title: "Szkoły po reformach — jak rodzice mogą sprawdzić wyniki"
+title: "Szkoły po reformach  -  jak rodzice mogą sprawdzić wyniki"
 description: "Rodzice mogą ocenić szkoły po reformach bez paniki wokół rankingów."
 pubDate: "2026-08-27"
 author: "Paweł Kruk"
@@ -11,7 +11,7 @@ image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format
 
 ---
 
-## Szkoły po reformach — co zmienia się w edukacji?
+## Szkoły po reformach  -  co zmienia się w edukacji?
 
 Od 2026 roku obowiązują nowe przepisy dotyczące systemu edukacji. Wprowadzone reformy mają na celu poprawę jakości nauczania. Rodzice stają przed wyzwaniem: jak ocenić ofertę szkół, nie wpadając w panikę związaną z rankingami. Warto przyjrzeć się kilku kluczowym aspektom.
 

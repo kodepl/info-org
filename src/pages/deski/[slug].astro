@@ -27,7 +27,7 @@ const posts = (await getCollection("wiadomosci"))
           </div>
         </article>
       ))}
-      {posts.length === 0 && <p class="text-mute">Brak materiałów w tej desce — wróć po dyżurze.</p>}
+      {posts.length === 0 && <p class="text-mute">Brak materiałów w tej desce. Wróć po dyżurze.</p>}
     </div>
   </main>
 </Broadcast>

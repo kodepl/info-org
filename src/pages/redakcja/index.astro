@@ -2,7 +2,7 @@
 import Broadcast from "../../layouts/Broadcast.astro";
 import site from "../../site.config";
 ---
-<Broadcast title="Redakcja" description="Kim jesteśmy">
+<Broadcast title="Redakcja" description="Kim jesteśmy i jak pracuje dyżur INFO.ORG.PL.">
   <main class="mx-auto max-w-3xl px-4 py-12">
     <h1 class="font-display text-4xl tracking-wide">Redakcja</h1>
     <div class="mt-8 flex gap-5 rounded-xl border border-white/10 bg-panel/50 p-6">
@@ -13,6 +13,14 @@ import site from "../../site.config";
         <p class="mt-3 text-mute">{site.authorBio}</p>
       </div>
     </div>
-    <p class="mt-8 leading-relaxed text-mute">INFO.ORG.PL to niezależny serwis informacyjny. Publikujemy teksty i zbieramy embedy kanałów live, żeby czytelnik mógł szybko złapać kontekst — bez 15 minut reklam przed temperaturą w studio.</p>
+    <p class="mt-8 leading-relaxed text-mute">
+      INFO.ORG.PL to niezależne studio informacyjne. Publikujemy teksty i zbieramy embedy kanałów live, żeby czytelnik mógł szybko złapać kontekst. Bez 15 minut reklam przed temperaturą w studio i bez udawania, że każdy redaktor jest ekspertem od energetyki, NATO i kawy naraz.
+    </p>
+    <ul class="mt-6 list-disc space-y-2 pl-5 text-mute">
+      <li>deski tematyczne zamiast jednego worka „aktualności”,</li>
+      <li>osobny <a class="text-beam underline" href="/slownik/">słownik</a> haseł redakcyjnych,</li>
+      <li><a class="text-beam underline" href="/nasluch/">nasłuch</a> po archiwum bez konta,</li>
+      <li>kanały live na <a class="text-beam underline" href="/live/">/live/</a> (embedy zewnętrzne, oznaczone).</li>
+    </ul>
   </main>
 </Broadcast>

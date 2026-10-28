@@ -7,7 +7,7 @@ const origin = "https://www.info.org.pl";
 
 export const GET: APIRoute = async () => {
   const posts = await getCollection("wiadomosci");
-  const pages = ["/", "/live/", "/wiadomosci/", "/deski/", "/redakcja/", "/kontakt/", "/polityka-prywatnosci/", "/regulamin/"];
+  const pages = ["/", "/live/", "/wiadomosci/", "/deski/", "/slownik/", "/nasluch/", "/redakcja/", "/kontakt/", "/polityka-prywatnosci/", "/regulamin/"];
   const urls = [
     ...pages.map((p) => `${origin}${p}`),
     ...site.desks.map((d) => `${origin}/deski/${deskSlug(d.name)}/`),

@@ -1,5 +1,5 @@
 ---
-title: "Cyberataki na małe firmy w Polsce — co zrobić w 48 godzin?"
+title: "Cyberataki na małe firmy w Polsce  -  co zrobić w 48 godzin?"
 description: "Przewodnik po działaniach w odpowiedzi na cyberataki na małe firmy w Polsce."
 pubDate: "2026-08-24"
 author: "Paweł Kruk"

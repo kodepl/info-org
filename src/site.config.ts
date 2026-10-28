@@ -5,14 +5,25 @@ const site = {
   name: "INFO.ORG.PL",
   shortName: "INFO",
   domain: "info.org.pl",
-  tagline: "Serwis informacyjny: Polska, świat, gospodarka i materiały wideo na żywo",
-  
-  
+  tagline: "Studio informacyjne: Polska, świat, gospodarka i materiały wideo na żywo",
+  email: "dyzur@info.org.pl",
   city: "Warszawa",
   address: "ul. Marszałkowska 84/92, 00-514 Warszawa",
   author: "Paweł Kruk",
-  authorBio: "Redaktor dyżurny. Skraca fakty, nie dokłada narracji.",
+  authorBio: "Redaktor dyżurny. Skraca fakty, nie dokłada narracji. Bez udawania eksperta od wszystkiego.",
   authorRole: "Redaktor dyżurny",
+  topicBacklog: [
+    "Jak czytać komunikat RCB bez paniki i bez bagatelizowania",
+    "Co oznacza „breaking” a co zwykła aktualizacja depeszy",
+    "Rozkład jazdy: gdzie sprawdzić zmianę przed wyjściem z domu",
+    "Inflacja odczuwalna: jak spisać własny koszyk bez excelowego teatru",
+    "Opóźnienie regionalne po 18:00: co warto zapisać na peronie",
+    "Sondaż wyborczy: trzy liczby, które trzeba zobaczyć obok słupka",
+    "Alert pogodowy vs alert bezpieczeństwa: różnica w praktyce",
+    "Remont ulicy: jak czytać uchwałę i mapę objazdów",
+    "Cena energii w rachunku: co jest taryfą, a co opłatą dystrybucyjną",
+    "Migracje w depeszy: jak oddzielić liczbę od komentarza politycznego",
+  ],
   authorAvatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&h=200&q=80",
   heroImage: u("photo-1495020689067-958852a7765e", 1600),
   covers: {
@@ -25,35 +36,35 @@ const site = {
   } as Record<string, string>,
   desks: [
     { name: "Polska", blurb: "Sejm, samorządy, infrastruktura, decyzje, które widać w sklepach i na torach." },
-    { name: "Świat", blurb: "Konflikty, wybory, migracje — bez tłumaczenia wszystkiego w pięciu zdaniach." },
+    { name: "Świat", blurb: "Konflikty, wybory, migracje: bez tłumaczenia wszystkiego w pięciu zdaniach." },
     { name: "Gospodarka", blurb: "Stopy, ceny, firmy i to, co realnie zmienia budżet domowy." },
-    { name: "Technologia", blurb: "Sieci, AI, cyberbezpieczeństwo — praktycznie, nie z broszury." },
+    { name: "Technologia", blurb: "Sieci, AI, cyberbezpieczeństwo: praktycznie, nie z broszury." },
   ],
-  /** Embedowalne kanały / streamy (YouTube). Live może być offline — wtedy YT pokazuje ostatni materiał. */
+  /** Embedowalne kanały / streamy (YouTube). Live może być offline; wtedy YT pokazuje ostatni materiał. */
   liveFeeds: [
     {
-      label: "Al Jazeera English — LIVE",
+      label: "Al Jazeera English LIVE",
       region: "Świat",
       embed: "https://www.youtube.com/embed/gCNeDWCI0vo",
-      note: "Kanał informacyjny na żywo — relacje międzynarodowe",
+      note: "Kanał informacyjny na żywo: relacje międzynarodowe",
     },
     {
-      label: "Lofi news desk — ambient (backup)",
+      label: "Lofi news desk ambient (backup)",
       region: "Studio",
       embed: "https://www.youtube.com/embed/jfKfPfyJRdk",
       note: "Backup player gdy stream news jest offline",
     },
     {
-      label: "Good Life Radio — 24/7",
+      label: "Good Life Radio 24/7",
       region: "Studio",
       embed: "https://www.youtube.com/embed/36YnV9STBqc",
       note: "Zapasowy stream embedowalny 24/7",
     },
     {
-      label: "Al Jazeera English — LIVE (mirror)",
+      label: "Al Jazeera English LIVE (mirror)",
       region: "Świat",
       embed: "https://www.youtube.com/embed/gCNeDWCI0vo",
-      note: "Ten sam feed — druga ramka na /live/",
+      note: "Ten sam feed: druga ramka na /live/",
     },
   ],
 

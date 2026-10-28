@@ -40,7 +40,12 @@ const primaryLive = site.liveFeeds[0];
       <aside class="flex flex-col gap-4 lg:col-span-4">
         <div class="rounded-lg border border-signal/40 bg-signal/10 px-4 py-3">
           <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-signal">Breaking desk</p>
-          <p class="mt-1 text-sm text-chalk/90">Najnowsze teksty z dyżuru — bez clickbaitu w tytule.</p>
+          <p class="mt-1 text-sm text-chalk/90">Najnowsze teksty z dyżuru, bez clickbaitu w tytule.</p>
+          <p class="mt-2 font-mono text-[10px] uppercase tracking-widest text-mute">
+            <a class="text-beam hover:underline" href="/slownik/">Słownik</a>
+            {" · "}
+            <a class="text-beam hover:underline" href="/nasluch/">Nasłuch</a>
+          </p>
         </div>
         {rail.map((post) => (
           <article class="rounded-lg border border-white/10 bg-panel/60 p-4 hover:border-beam/40">
@@ -62,7 +67,7 @@ const primaryLive = site.liveFeeds[0];
             <a href={`/wiadomosci/${lead.slug}/`} class="hover:text-beam">{lead.data.title}</a>
           </h2>
           <p class="mt-4 text-lg leading-relaxed text-mute">{lead.data.description}</p>
-          <a href={`/wiadomosci/${lead.slug}/`} class="mt-4 inline-block font-mono text-xs uppercase tracking-widest text-beam hover:underline">Czytaj materiał →</a>
+          <a href={`/wiadomosci/${lead.slug}/`} class="mt-4 inline-block font-mono text-xs uppercase tracking-widest text-beam hover:underline">Czytaj materiał</a>
         </article>
         <div class="lg:col-span-5">
           <img src={coverFor(lead.data.category, lead.data.image)} alt="" class="aspect-[16/10] w-full rounded-lg object-cover ring-1 ring-white/10" />

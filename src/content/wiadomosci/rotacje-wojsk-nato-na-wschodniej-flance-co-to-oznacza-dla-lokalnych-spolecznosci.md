@@ -1,5 +1,5 @@
 ---
-title: "Rotacje wojsk NATO na wschodniej flance — co to oznacza dla lokalnych społeczności?"
+title: "Rotacje wojsk NATO na wschodniej flance  -  co to oznacza dla lokalnych społeczności?"
 description: "Analiza wpływu rotacji wojsk NATO na życie mieszkańców miast w pobliżu baz wojskowych."
 pubDate: "2026-08-24"
 author: "Paweł Kruk"

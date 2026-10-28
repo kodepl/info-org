@@ -1,0 +1,49 @@
+---
+import Broadcast from "../layouts/Broadcast.astro";
+
+const terms = [
+  { term: "Breaking", def: "Sygnał, że właśnie weszła informacja wymagająca natychmiastowej uwagi. Nie oznacza, że wszystko już wiadomo. Często oznacza tylko, że coś się wydarzyło i trwa weryfikacja." },
+  { term: "Aktualizacja", def: "Dopisek do istniejącej depeszy: nowa liczba, nowa godzina, sprostowanie. Nie zawsze zasługuje na czerwony pasek." },
+  { term: "Lead", def: "Pierwsze zdania materiału. Ma podać kto / co / gdzie / kiedy, zanim wejdzie komentarz." },
+  { term: "Depesza", def: "Krótki komunikat faktograficzny. Na INFO.ORG.PL traktujemy ją jako bazę pod dłuższy tekst, nie jako gotowy wyrok." },
+  { term: "Desk", def: "Biurko tematyczne (Polska, Świat, Gospodarka, Technologia). Filtruje kolejkę materiałów, nie światopogląd czytelnika." },
+  { term: "Embed", def: "Osadzony player wideo lub stream. U nas: kanały live na /live/. Embed nie jest naszym materiałem redakcyjnym." },
+  { term: "Źródło oficjalne", def: "Komunikat urzędu, służb, spółki giełdowej, biura prasowego. Nadal wymaga daty i zakresu, nie tylko logo." },
+  { term: "Nasłuch", def: "Szybkie przeszukanie archiwum po haśle. Strona /nasluch/ działa lokalnie w przeglądarce." },
+  { term: "Ticker", def: "Pasek pod nagłówkiem z krótkimi komunikatami dyżuru. Nie zastępuje artykułu." },
+  { term: "Sprostowanie", def: "Publikacja korekty po błędzie. Lepiej krótko i wysoko niż „przy okazji w akapicie 14”." },
+];
+---
+<Broadcast title="Słownik redakcyjny" description="Hasła używane w studio informacyjnym INFO.ORG.PL.">
+  <main class="mx-auto max-w-3xl px-4 py-12">
+    <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-beam">Narzędzie</p>
+    <h1 class="mt-2 font-display text-4xl tracking-wide">Słownik redakcyjny</h1>
+    <p class="mt-3 text-mute">Krótkie definicje bez żargonu z PowerPointa. Filtruj po haśle.</p>
+    <input
+      id="q-slownik-info"
+      type="search"
+      placeholder="Filtruj hasło…"
+      autocomplete="off"
+      class="mt-6 w-full border border-white/15 bg-panel px-4 py-3 text-base text-chalk outline-none ring-beam/40 placeholder:text-mute focus:ring-1"
+    />
+    <dl id="list-slownik-info" class="mt-8 divide-y divide-white/10 border border-white/10 bg-panel/50">
+      {terms.map((t) => (
+        <div class="row-slownik px-5 py-4" data-term={t.term.toLowerCase()}>
+          <dt class="font-display text-2xl tracking-wide text-chalk">{t.term}</dt>
+          <dd class="mt-2 text-sm leading-relaxed text-mute">{t.def}</dd>
+        </div>
+      ))}
+    </dl>
+  </main>
+</Broadcast>
+<script>
+  const input = document.getElementById("q-slownik-info");
+  const rows = [...document.querySelectorAll(".row-slownik")];
+  input.addEventListener("input", () => {
+    const q = input.value.trim().toLowerCase();
+    rows.forEach((row) => {
+      const hay = (row.dataset.term + " " + row.textContent).toLowerCase();
+      row.style.display = !q || hay.includes(q) ? "" : "none";
+    });
+  });
+</script>

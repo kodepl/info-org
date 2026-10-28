@@ -1,5 +1,5 @@
 ---
-title: "Samorządy i remonty dróg — jak ocenić szanse twojej ulicy na remont"
+title: "Samorządy i remonty dróg  -  jak ocenić szanse twojej ulicy na remont"
 description: "Sprawdź, jak analizować plany inwestycyjne gminy, aby dowiedzieć się o szansach na remont twojej ulicy."
 pubDate: "2026-08-21"
 author: "Paweł Kruk"

@@ -26,10 +26,27 @@ const now = new Date().toLocaleString("pl-PL", {
     <meta property="og:image" content={image} />
     <meta property="og:locale" content="pl_PL" />
     <meta name="robots" content="index,follow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Oswald:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "NewsMediaOrganization",
+      name: site.name,
+      url: `https://www.${site.domain}`,
+      description: site.tagline,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "ul. Marszałkowska 84/92",
+        addressLocality: site.city,
+        postalCode: "00-514",
+        addressCountry: "PL",
+      },
+    })} />
   </head>
   <body class="min-h-screen bg-desk font-body text-chalk antialiased">
     <div class="border-b border-beam/20 bg-panel">
@@ -59,10 +76,11 @@ const now = new Date().toLocaleString("pl-PL", {
           <a href="/live/" class="rounded px-3 py-2 text-signal hover:bg-signal/10">Na żywo</a>
           <a href="/wiadomosci/" class="rounded px-3 py-2 hover:bg-white/5 hover:text-beam">Wiadomości</a>
           <a href="/deski/" class="rounded px-3 py-2 hover:bg-white/5 hover:text-beam">Deski</a>
+          <a href="/slownik/" class="rounded px-3 py-2 hover:bg-white/5 hover:text-beam">Słownik</a>
+          <a href="/nasluch/" class="rounded px-3 py-2 hover:bg-white/5 hover:text-beam">Nasłuch</a>
           <a href="/redakcja/" class="rounded px-3 py-2 hover:bg-white/5 hover:text-beam">Redakcja</a>
           <a href="/kontakt/" class="rounded px-3 py-2 hover:bg-white/5 hover:text-beam">Kontakt</a>
-        <a href="/nasluch/" class="rounded px-3 py-2 hover:bg-white/5 hover:text-beam">Szukaj</a>
-          </nav>
+        </nav>
       </div>
       <div class="overflow-hidden border-t border-beam/20 bg-black/40">
         <div class="ticker-track flex w-max gap-10 whitespace-nowrap py-2 font-mono text-xs uppercase tracking-widest text-beam/90">
@@ -91,8 +109,9 @@ const now = new Date().toLocaleString("pl-PL", {
           </ul>
         </div>
         <div class="text-sm text-mute">
-          <p>To nie jest portal z 40 banerami pod leadem. Teksty, streamy i kontekst — bez udawania, że jesteśmy telewizją z budżetem ministerstwa.</p>
-          <p class="mt-4"><a href="/polityka-prywatnosci/" class="underline hover:text-beam">Prywatność</a> · <a href="/regulamin/" class="underline hover:text-beam">Regulamin</a></p>
+          <p>To nie jest portal z 40 banerami pod leadem. Teksty, streamy i kontekst, bez udawania, że jesteśmy telewizją z budżetem ministerstwa.</p>
+          <p class="mt-4"><a href="/slownik/" class="underline hover:text-beam">Słownik</a> · <a href="/nasluch/" class="underline hover:text-beam">Nasłuch</a></p>
+          <p class="mt-2"><a href="/polityka-prywatnosci/" class="underline hover:text-beam">Prywatność</a> · <a href="/regulamin/" class="underline hover:text-beam">Regulamin</a></p>
           <p class="mt-2">© {new Date().getFullYear()} {site.name}</p>
         </div>
       </div>

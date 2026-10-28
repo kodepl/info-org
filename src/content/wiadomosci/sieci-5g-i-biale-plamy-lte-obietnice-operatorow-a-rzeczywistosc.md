@@ -1,5 +1,5 @@
 ---
-title: "Sieci 5G i białe plamy LTE — obietnice operatorów a rzeczywistość"
+title: "Sieci 5G i białe plamy LTE  -  obietnice operatorów a rzeczywistość"
 description: "Jak operatorzy obiecują zasięg, gdy rzeczywistość pokazuje E przy granicy powiatu?"
 pubDate: "2026-08-25"
 author: "Paweł Kruk"
